@@ -1,0 +1,43 @@
+﻿@page "/mesinkasir"
+@inject HttpClient Http
+@if (contents == null){<p><em>Loading...</em></p>}else {@foreach (var content in contents){
+<PageTitle>@content.Kasir</PageTitle>
+<HeadContent>
+<meta name="description" content="@content.Kasirdeskripsi">
+<meta content='@content.Kasir' property='og:title'/>
+<meta content='https://www.fiverr.com/creativitas/create-your-custom-website-and-app' property='og:author'/>
+<meta content='@content.Kasir' name='facebook:title'/>
+<meta content='website' property='og:type'/>
+<meta content='https://www.facebook.com/mesinkasircomplete' property='facebook:author'/>
+<meta content='@content.Cover' name='facebook:image'/>
+<meta content='@content.Kasir' property='og:site_name'/>
+<meta content='@content.Kasirdeskripsi' property='facebook:description'/>
+<meta content='summary_large_image' name='twitter:card'/>
+<meta content='https://twitter.com/hockeycomp' property='twitter:author'/>
+<meta content='@content.Cover' name='twitter:image'/>
+<meta content='@content.Kasirdeskripsi' name='twitter:description'/>
+<meta content='@content.Kasir' name='twitter:title'/>
+<meta name="robots" content="index, follow">
+</HeadContent>
+<h1><strong><a href="/">@content.Kasir</a></strong></h1>
+<h2>@content.Kasirdeskripsi</h2>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/@content.Kasirembed" title="@content.Kasir" allowfullscreen></iframe>
+</div>
+<p>@content.Kasirtext</p>
+}}
+@code {
+    private KasirContent[]? contents;
+    protected override async Task OnInitializedAsync()
+    {
+        contents = await Http.GetFromJsonAsync<KasirContent[]>("data/page.json");
+    }
+    public class KasirContent
+    {
+        public string? Kasir { get; set; }
+        public string? Kasirembed { get; set; }
+        public string? Kasirdeskripsi { get; set; }
+        public string? Kasirtext { get; set; }
+        public string? Cover { get; set; }
+    }
+}

@@ -1,0 +1,46 @@
+﻿@page "/katalog"
+@inject HttpClient Http
+@if (contents == null){<p><em>Loading...</em></p>}else {@foreach (var content in contents){
+<PageTitle>@content.Katalog</PageTitle>
+<HeadContent>
+<meta name="description" content="@content.Katalogdeskripsi">
+<meta content='@content.Katalog' property='og:title'/>
+<meta content='https://www.fiverr.com/creativitas/create-your-custom-website-and-app' property='og:author'/>
+<meta content='@content.Katalog' name='facebook:title'/>
+<meta content='website' property='og:type'/>
+<meta content='https://www.facebook.com/mesinkasircomplete' property='facebook:author'/>
+<meta content='@content.Cover' name='facebook:image'/>
+<meta content='@content.Katalog' property='og:site_name'/>
+<meta content='@content.Katalogdeskripsi' property='facebook:description'/>
+<meta content='summary_large_image' name='twitter:card'/>
+<meta content='https://twitter.com/hockeycomp' property='twitter:author'/>
+<meta content='@content.Cover' name='twitter:image'/>
+<meta content='@content.Katalogdeskripsi' name='twitter:description'/>
+<meta content='@content.Katalog' name='twitter:title'/>
+<meta name="robots" content="index, follow">
+</HeadContent>
+<h1><strong><a href="/">@content.Katalog</a></strong></h1>
+<h2>@content.Katalogdeskripsi</h2>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/@content.Katalogembed" title="@content.Katalog" allowfullscreen></iframe>
+</div>
+<p>@content.Katalogtext</p>
+<a href="@content.Katalogdownload" class="btn" style="background-color:purple; color:white;">@content.Katalogbtn</a>
+}}
+@code {
+    private KatalogContent[]? contents;
+    protected override async Task OnInitializedAsync()
+    {
+        contents = await Http.GetFromJsonAsync<KatalogContent[]>("data/page.json");
+    }
+    public class KatalogContent
+    {
+        public string? Katalog { get; set; }
+        public string? Katalogembed { get; set; }
+        public string? Katalogdeskripsi { get; set; }
+        public string? Katalogtext { get; set; }
+        public string? Cover { get; set; }
+        public string? Katalogdownload { get; set; }
+        public string? Katalogbtn{ get; set; }
+    }
+}

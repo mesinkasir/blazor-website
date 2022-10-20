@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "/img/aplikasiresto1.webp",
+    "judul": "RestoranPos",
+    "menu1": "Home",
+    "menu2": "Fitur",
+    "menu3": "Demo Kasir",
+    "menu4": "All In One Demo",
+    "menu5": "Mobile",
+    "menu6": "Android",
+    "menu7": "QR Code",
+    "menu8": "E-Catalog",
+    "menu9": "Download App",
+    "menu10": "Contact",
+    "link1": "/",
+    "link2": "fitur",
+    "link3": "mesinkasir",
+    "link4": "pointofsale",
+    "link5": "mobilepos",
+    "link6": "androidpos",
+    "link7": "qrcode",
+    "link8": "katalog",
+    "link9": "https://mesinkasir.github.io/larapos/android/resto-x.apk",
+    "link10": "contact"	
+  }
+]

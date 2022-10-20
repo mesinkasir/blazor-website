@@ -1,0 +1,51 @@
+@inject HttpClient Http
+<div class="row">
+@if (starts == null){<p><em>Loading...</em></p>}else {@foreach (var start in starts){
+<div class="col-md-6 p-3">
+<h3><strong><a href="/">@start.Section1</a></strong></h3>
+<p>@start.Section1text</p>
+</div>
+<div class="col-md-6 p-3">
+<h3><strong><a href="/">@start.Section2</a></strong></h3>
+<p>@start.Section2text</p>
+</div>
+<div class="col-md-6 p-3">
+<h3><strong><a href="/">@start.Section3</a></strong></h3>
+<p>@start.Section3text</p>
+</div>
+<div class="col-md-6 p-3">
+<h3><strong><a href="/">@start.Section4</a></strong></h3>
+<p>@start.Section4text</p>
+</div>
+<div class="col-md-6 p-3">
+<h3><strong><a href="/">@start.Section5</a></strong></h3>
+<p>@start.Section5text</p>
+<p>@start.Section5text1</p>
+</div>
+<div class="col-md-6 p-3">
+<img class="img-fluid" alt="@start.Section5" src="@start.Section6" width="100%" height="100%"/>
+</div>
+}}
+</div>
+@code {
+    private SectionStart[]? starts;
+    protected override async Task OnInitializedAsync()
+    {
+        starts = await Http.GetFromJsonAsync<SectionStart[]>("data/section.json");
+    }
+    public class SectionStart
+    {
+        public string? Section1 { get; set; }
+        public string? Section1text { get; set; }
+        public string? Section2 { get; set; }
+        public string? Section2text { get; set; }
+        public string? Section3 { get; set; }
+        public string? Section3text { get; set; }
+        public string? Section4 { get; set; }
+        public string? Section4text { get; set; }
+        public string? Section5 { get; set; }
+        public string? Section5text { get; set; }
+        public string? Section5text1 { get; set; }
+        public string? Section6 { get; set; }
+    }
+}

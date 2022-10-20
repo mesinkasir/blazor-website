@@ -1,0 +1,43 @@
+﻿@page "/androidpos"
+@inject HttpClient Http
+@if (contents == null){<p><em>Loading...</em></p>}else {@foreach (var content in contents){
+<PageTitle>@content.Android</PageTitle>
+<HeadContent>
+<meta name="description" content="@content.Androiddeskripsi">
+<meta content='@content.Android' property='og:title'/>
+<meta content='https://www.fiverr.com/creativitas/create-your-custom-website-and-app' property='og:author'/>
+<meta content='@content.Android' name='facebook:title'/>
+<meta content='website' property='og:type'/>
+<meta content='https://www.facebook.com/mesinkasircomplete' property='facebook:author'/>
+<meta content='@content.Cover' name='facebook:image'/>
+<meta content='@content.Android' property='og:site_name'/>
+<meta content='@content.Androiddeskripsi' property='facebook:description'/>
+<meta content='summary_large_image' name='twitter:card'/>
+<meta content='https://twitter.com/hockeycomp' property='twitter:author'/>
+<meta content='@content.Cover' name='twitter:image'/>
+<meta content='@content.Androiddeskripsi' name='twitter:description'/>
+<meta content='@content.Android' name='twitter:title'/>
+<meta name="robots" content="index, follow">
+</HeadContent>
+<h1><strong><a href="/">@content.Android</a></strong></h1>
+<h2>@content.Androiddeskripsi</h2>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/@content.Androidembed" title="@content.Android" allowfullscreen></iframe>
+</div>
+<p>@content.Androidtext</p>
+}}
+@code {
+    private AndroidContent[]? contents;
+    protected override async Task OnInitializedAsync()
+    {
+        contents = await Http.GetFromJsonAsync<AndroidContent[]>("data/page.json");
+    }
+    public class AndroidContent
+    {
+        public string? Android { get; set; }
+        public string? Androidembed { get; set; }
+        public string? Androiddeskripsi { get; set; }
+        public string? Androidtext { get; set; }
+        public string? Cover { get; set; }
+    }
+}

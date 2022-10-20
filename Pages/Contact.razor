@@ -1,0 +1,45 @@
+﻿@page "/contact"
+@inject HttpClient Http
+@if (contents == null){<p><em>Loading...</em></p>}else {@foreach (var content in contents){
+<PageTitle>@content.Kontak</PageTitle>
+<HeadContent>
+<meta name="description" content="@content.Kontakdeskripsi">
+<meta content='@content.Kontak' property='og:title'/>
+<meta content='https://www.fiverr.com/creativitas/create-your-custom-website-and-app' property='og:author'/>
+<meta content='@content.Kontak' name='facebook:title'/>
+<meta content='website' property='og:type'/>
+<meta content='https://www.facebook.com/mesinkasircomplete' property='facebook:author'/>
+<meta content='@content.Cover' name='facebook:image'/>
+<meta content='@content.Kontak' property='og:site_name'/>
+<meta content='@content.Kontakdeskripsi' property='facebook:description'/>
+<meta content='summary_large_image' name='twitter:card'/>
+<meta content='https://twitter.com/hockeycomp' property='twitter:author'/>
+<meta content='@content.Cover' name='twitter:image'/>
+<meta content='@content.Kontakdeskripsi' name='twitter:description'/>
+<meta content='@content.Kontak' name='twitter:title'/>
+<meta name="robots" content="index, follow">
+</HeadContent>
+<h1><strong><a href="/">@content.Kontak</a></strong></h1>
+<h2>@content.Kontakdeskripsi</h2>
+<img class="img-fluid" width="100%" height="100%" alt="@content.Kontakdeskripsi" src="@content.Cover"/>
+<h3>Whatsapp @content.Kontakwa</h3>
+<h3>Phone : @content.Kontakphone</h3>
+<h3>Email : @content.Kontakmail</h3>
+}}
+@code {
+    private KontakContent[]? contents;
+    protected override async Task OnInitializedAsync()
+    {
+        contents = await Http.GetFromJsonAsync<KontakContent[]>("data/page.json");
+    }
+    public class KontakContent
+    {
+        public string? Kontak { get; set; }
+        public string? Kontakembed { get; set; }
+        public string? Kontakdeskripsi { get; set; }
+        public string? Kontakwa { get; set; }
+        public string? Kontakphone { get; set; }
+        public string? Kontakmail{ get; set; }
+        public string? Cover { get; set; }
+    }
+}

@@ -1,0 +1,43 @@
+﻿@page "/mobilepos"
+@inject HttpClient Http
+@if (contents == null){<p><em>Loading...</em></p>}else {@foreach (var content in contents){
+<PageTitle>@content.Mobile</PageTitle>
+<HeadContent>
+<meta name="description" content="@content.Mobiledeskripsi">
+<meta content='@content.Mobile' property='og:title'/>
+<meta content='https://www.fiverr.com/creativitas/create-your-custom-website-and-app' property='og:author'/>
+<meta content='@content.Mobile' name='facebook:title'/>
+<meta content='website' property='og:type'/>
+<meta content='https://www.facebook.com/mesinkasircomplete' property='facebook:author'/>
+<meta content='@content.Cover' name='facebook:image'/>
+<meta content='@content.Mobile' property='og:site_name'/>
+<meta content='@content.Mobiledeskripsi' property='facebook:description'/>
+<meta content='summary_large_image' name='twitter:card'/>
+<meta content='https://twitter.com/hockeycomp' property='twitter:author'/>
+<meta content='@content.Cover' name='twitter:image'/>
+<meta content='@content.Mobiledeskripsi' name='twitter:description'/>
+<meta content='@content.Mobile' name='twitter:title'/>
+<meta name="robots" content="index, follow">
+</HeadContent>
+<h1><strong><a href="/">@content.Mobile</a></strong></h1>
+<h2>@content.Mobiledeskripsi</h2>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/@content.Mobileembed" title="@content.Mobile" allowfullscreen></iframe>
+</div>
+<p>@content.Mobiletext</p>
+}}
+@code {
+    private MobileContent[]? contents;
+    protected override async Task OnInitializedAsync()
+    {
+        contents = await Http.GetFromJsonAsync<MobileContent[]>("data/page.json");
+    }
+    public class MobileContent
+    {
+        public string? Mobile { get; set; }
+        public string? Mobileembed { get; set; }
+        public string? Mobiledeskripsi { get; set; }
+        public string? Mobiletext { get; set; }
+        public string? Cover { get; set; }
+    }
+}

@@ -1,0 +1,48 @@
+﻿@page "/"
+@inject HttpClient Http
+@if (starts == null){<p><em>Loading...</em></p>}else {@foreach (var start in starts){
+<PageTitle>@start.Judul</PageTitle>
+<HeadContent>
+<meta name="description" content="@start.Deskripsi">
+<meta content='@start.Judul' property='og:title'/>
+<meta content='https://www.fiverr.com/creativitas/create-your-custom-website-and-app' property='og:author'/>
+<meta content='@start.Judul' name='facebook:title'/>
+<meta content='website' property='og:type'/>
+<meta content='https://www.facebook.com/mesinkasircomplete' property='facebook:author'/>
+<meta content='@start.Cover' name='facebook:image'/>
+<meta content='@start.Judul' property='og:site_name'/>
+<meta content='@start.Deskripsi' property='facebook:description'/>
+<meta content='summary_large_image' name='twitter:card'/>
+<meta content='https://twitter.com/hockeycomp' property='twitter:author'/>
+<meta content='@start.Cover' name='twitter:image'/>
+<meta content='@start.Deskripsi' name='twitter:description'/>
+<meta content='@start.Judul ' name='twitter:title'/>
+<meta name="robots" content="index, follow">
+</HeadContent>
+<div class="row">
+<div class="col-md-12 p-1">
+<img class="img-fluid" width="100%" height="100%" alt="@start.Judul" src="@start.Cover"/>
+<div class="p-3">
+<h1><strong><a href="/">@start.Judul</a></strong></h1>
+<h2>@start.Deskripsi</h2>
+</div>
+</div>
+</div>
+}}
+
+<Section />
+
+@code {
+    private IntroStart[]? starts;
+    protected override async Task OnInitializedAsync()
+    {
+        starts = await Http.GetFromJsonAsync<IntroStart[]>("data/start.json");
+    }
+    public class IntroStart
+    {
+        public string? Judul { get; set; }
+        public string? Deskripsi { get; set; }
+        public string? Artikel { get; set; }
+        public string? Cover { get; set; }
+    }
+}
