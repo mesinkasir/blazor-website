@@ -4,7 +4,7 @@ A starter project for blazor template themes
 
 Demo : [https://restoranpos.web.app](https://restoranpos.web.app)
 
-Documentation: soon....
+Documentation: [https://www.hockeycomputindo.com/2022/10/free-download-blazor-webassembly-seo.html](https://www.hockeycomputindo.com/2022/10/free-download-blazor-webassembly-seo.html)
 
 
 -----------------------------------------------------
@@ -27,4 +27,4 @@ Post Article Screen
 
 Demo : [https://restoranpos.web.app](https://restoranpos.web.app)
 
-Documentation: soon....
+Documentation: [https://www.hockeycomputindo.com/2022/10/free-download-blazor-webassembly-seo.html](https://www.hockeycomputindo.com/2022/10/free-download-blazor-webassembly-seo.html)
